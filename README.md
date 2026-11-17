@@ -131,3 +131,13 @@ The current version uses a local demonstration response generator. It does not r
 ## Author
 
 Shravani Jagdish Rakhade
+## 📸 Application Screenshots
+
+### 1. Dashboard
+![PromptGuard AI Dashboard](screenshots/dashboard.png)
+
+### 2. Prompt Testing Results
+![Prompt Testing Results](screenshots/test-results.png)
+
+### 3. Testing History
+![Testing History](screenshots/testing-history.png)
