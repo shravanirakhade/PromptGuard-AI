@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 from backend.prompt_engine import (
     validate_prompt,
+    analyze_prompt,
     improve_prompt,
     generate_response
 )
@@ -105,6 +106,30 @@ def get_history():
             "total_records": len(history),
             "history": history
         }
+
+    except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=str(error)
+        )
+    # Prompt Quality Analysis API
+
+@app.post("/analyze-prompt")
+def analyze_prompt_api(request: PromptRequest):
+
+    try:
+        result = analyze_prompt(request.prompt)
+
+        return {
+            "original_prompt": request.prompt,
+            "analysis": result
+        }
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
 
     except Exception as error:
         raise HTTPException(
